@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="बिहार न्यूज़ | Bihar Jharkhand News in Hindi">
+  <title>बिहार न्यूज़ | Bihar Jharkhand News in Hindi | CrimeKhabar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-row">
+      <button class="menu-btn" id="menuBtn" aria-label="मेनू खोलें">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="logo logo--header" aria-label="CrimeKhabar">
+        <img class="logo-img" src="public/news_icon.jpeg" alt="CrimeKhabar" width="200" height="80">
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-home active">होम</a>
+      </nav>
+      <button type="button" class="search-btn" id="searchBtn" aria-label="खोजें" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="breaking-bar" aria-live="polite">
+    <span class="breaking-label">ब्रेकिंग</span>
+    <div class="ticker-wrap">
+      <div class="ticker" id="breakingTicker"></div>
+    </div>
+  </div>
+
+  <!-- Search overlay -->
+  <div class="search-overlay" id="searchOverlay" hidden>
+    <div class="search-modal" role="dialog" aria-label="खोजें">
+      <form class="search-modal-form" id="headerSearchForm" role="search">
+        <svg class="search-modal-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="searchInput" placeholder="खबर खोजें..." autocomplete="off" enterkeyhint="search">
+        <button type="button" class="search-modal-clear" id="searchClear" aria-label="साफ़ करें" hidden>×</button>
+        <button type="button" class="search-modal-close" id="searchClose" aria-label="बंद करें">रद्द</button>
+      </form>
+      <div class="search-modal-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <!-- Hero section -->
+    <section class="hero-section">
+      <div class="hero-grid">
+        <article class="hero-main">
+          <a href="#" class="hero-link">
+            <div class="hero-image">
+              <img src="" alt="" id="heroImage">
+              <span class="badge badge-breaking" hidden>Breaking</span>
+              <span class="badge badge-category"></span>
+            </div>
+            <h1 class="hero-title"></h1>
+            <div class="hero-meta">
+              <span class="time"></span>
+              <span class="author"></span>
+            </div>
+          </a>
+        </article>
+
+        <aside class="breaking-sidebar">
+          <h2 class="sidebar-title">ब्रेकिंग न्यूज़</h2>
+          <ul class="breaking-list" id="breakingSidebarList"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Featured cards row -->
+    <section class="featured-row" id="featuredRow"></section>
+
+    <!-- Main layout with sidebar -->
+    <div class="content-layout">
+      <div class="content-main">
+        <!-- Latest news -->
+        <section class="section-block" id="cat-latest">
+          <div class="section-header">
+            <h2>ताज़ा खबरें</h2>
+          </div>
+          <div class="news-grid" id="latestNews"></div>
+        </section>
+
+        <!-- All WordPress category sections injected here -->
+        <div id="categorySections"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-widget trending-widget">
+          <h3 class="widget-title">ट्रेंडिंग</h3>
+          <ul class="trending-list" id="trendingList"></ul>
+        </div>
+        <div class="sidebar-widget must-read-widget">
+          <h3 class="widget-title">जरूर पढ़ें</h3>
+          <ul class="must-read-list" id="mustReadList"></ul>
+        </div>
+        <div class="sidebar-widget follow-widget">
+          <h3 class="widget-title">फॉलो करें</h3>
+          <div class="social-links">
+            <a href="#" class="social-btn facebook" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn twitter" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-btn youtube" aria-label="YouTube">▶</a>
+            <a href="#" class="social-btn whatsapp" aria-label="WhatsApp">W</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo logo--footer" aria-label="CrimeKhabar">
+          <img class="logo-img" src="public/news_icon.jpeg" alt="CrimeKhabar" width="200" height="80">
+        </a>
+        <p>बिहार की सबसे तेज़ और विश्वसनीय डिजिटल न्यूज़ पोर्टल। राजनीति, अपराध, खेल, मनोरंजन और स्थानीय खबरें सबसे पहले।</p>
+      </div>
+      <div class="footer-links">
+        <h4>श्रेणियां</h4>
+        <ul id="footerCategories"></ul>
+      </div>
+      <div class="footer-links">
+        <h4>त्वरित लिंक</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+      <div class="footer-app">
+        <h4>ऐप डाउनलोड करें</h4>
+        <div class="app-card">
+          <span class="app-icon">📱</span>
+          <div>
+            <strong>CrimeKhabar App</strong>
+            <span>PWA — होम स्क्रीन पर जोड़ें</span>
+          </div>
+        </div>
+        <p class="footer-note">बिहार और झारखंड की ताज़ा खबरें सबसे पहले पाएं।</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CrimeKhabar. All Rights Reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile bottom nav -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="active">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>होम</span>
+    </a>
+    <a href="index.html#cat-latest">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/></svg>
+      <span>ताज़ा</span>
+    </a>
+    <button type="button" id="mobileSearchBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span>खोजें</span>
+    </button>
+    <a href="#" id="mobileTrendingBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.5L9.5 12.5L13.5 16.5L22 7.93L20.59 6.52L13.5 13.5L9.5 9.5L2 17L3.5 18.5Z"/></svg>
+      <span>ट्रेंडिंग</span>
+    </a>
+    <button type="button" id="moreNavBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      <span>और</span>
+    </button>
+  </nav>
+
+  <!-- Mobile more menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span>श्रेणियां</span>
+        <button id="mobileMenuClose" aria-label="बंद">×</button>
+      </div>
+      <nav class="mobile-menu-nav" id="mobileMenuNav">
+        <a href="index.html">होम</a>
+        <!-- WordPress categories loaded here by app.js -->
+      </nav>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/wordpress.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
